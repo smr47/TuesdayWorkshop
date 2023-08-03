@@ -1,0 +1,31 @@
+# useful, simple commands
+
+# build a single-file c program in a.out
+# product executable is named a.out
+gcc source.c
+clang source.c
+
+# execute a.out
+# use ./ prefix because your current dir is probably not in your $PATH
+./a.out
+
+# build & execute in one command
+gcc source.c; ./a.out
+clang source.c; ./a.out
+
+# build a single-file c program with a chosen name
+gcc name.c -o name
+clang name.c -o name
+
+# build & exec in one command with chosen name
+gcc name.c -o name; ./name
+clang name.c -o name; ./name
+
+# build a single-file c program whose name is the stem of the source name
+src=name.c; gcc $src -o ${src%%.c}
+src=name.c; clang $src -o ${src%%.c}
+
+# build & exec in one command
+src=name.c; exe=${src%%.c}; gcc $src -o $exe; ./$exe
+src=name.c; exe=${src%%.c}; clang $src -o $exe; ./$exe
+
